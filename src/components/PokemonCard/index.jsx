@@ -3,28 +3,49 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Icon, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { Box, Button, CardActionArea, CardActions } from '@mui/material';
 
-export default function PokemonCard() {
+export default function PokemonCard({ id, name , image, types }) {
+  const tiposPokemon = () => {
+    if (types[1]) {
+      return types[0].type.name + " | " + types[1].type.name;
+    }
+    return types[0].type.name;
+  };
   return (
-    <Card sx={{ maxWidth: 260 }}>
+    <Card sx={{ maxWidth: 340 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
-          image="#"
+          height="150"
+          image={image}
           alt="pokemon"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Pokemon
+            {id} | {name} 
+          </Typography>          
+          <Typography variant="caption" color="text.secondary">
+            {tiposPokemon()}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Editar
-        </Button>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+
+          <IconButton size="medium" color="inherit">
+            <EditIcon/>
+          </IconButton>
+          <IconButton size="medium" color="inherit">
+            <DeleteIcon/>
+          </IconButton>
+          <Typography gutterBottom variant="caption" component="div" color="text.secondary">
+          </Typography>
+      </Box>
+
       </CardActions>
     </Card>
   );

@@ -54,29 +54,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function Cabecalho({buscaPokemon}) {
   return (
     <Box sx={{ flexGrow: 1 , marginBottom:"3em" }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor:"#ffcb05" }}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            PokeAPI
+            >
+
+            <Box component="img" src="/assets/pokeapi.png" height="2em"/>
+
           </Typography>
-          <Search>
+          <Search onChange={(e)=>buscaPokemon(e.target.value)}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -85,12 +78,15 @@ export default function SearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+
           <IconButton size="large" color="inherit">
             <AddCircleIcon/>
           </IconButton>
+
           <IconButton size="large" color="inherit">
             <LogoutIcon />
           </IconButton>
+
         </Toolbar>
       </AppBar>
     </Box>
