@@ -17,7 +17,7 @@ export const Home = () => {
 
     var endpoints = [];
     // valor inicial; condicao para acabar; interacao
-    for (var i = 1; i < 100; i++){
+    for (var i = 1; i < 20; i++){
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
     }
 
